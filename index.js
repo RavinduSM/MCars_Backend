@@ -25,7 +25,7 @@ app.use(cookieParser());
 // Enable cors at the server side.
 
 const corsOption = {
-  origin: ["https://mcars-backend.onrender.com"],
+  origin: ['http://localhost:3000'],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
