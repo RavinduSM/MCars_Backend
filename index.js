@@ -3,9 +3,11 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import path from "path";
 
 import UserRouter from "./routes/authRoutes.js";
 import vehicleRouter from "./routes/vehicleRoutes.js";
+import uploadRouter from "./routes/uploadRoutes.js";
 
 dotenv.config();
 
@@ -33,6 +35,10 @@ app.use(cors(corsOption));
 
 app.use("/api/auth", UserRouter);
 app.use("/api/vehicles", vehicleRouter);
+app.use("/api/uploads", uploadRouter);
+
+const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 
 const port = process.env.port;
 app.listen(port, () => {
